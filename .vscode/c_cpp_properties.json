@@ -3,7 +3,7 @@
     {
       "name": "ESP-IDF",
       "compilerPath": "",
-      "compileCommands": "/home/walzes/Templates/ESP32-Projects/weather-station-gateway/build/compile_commands.json",
+      "compileCommands": "${config:idf.buildPath}/compile_commands.json",
       "intelliSenseMode": "gcc-x86",
       "includePath": [
         "${workspaceFolder}/**"
