@@ -1,4 +1,33 @@
-#include <stdio.h>
+#include <string.h>
+
+#include "esp_err.h"
+#include "esp_log.h"
+#include "nvs_flash.h"
+
+#include "credentials.h"
+#include "ble_prov.h"
+#include "wifi_sta.h"
+#include "gateway_id.h"
+#include "provision_client.h"
+#include "nrf24_receiver.h"
+#include "stations_registry.h"
+#include "list_update_client.h"
+#include "sntp_sync.h"
+#include "measurement_client.h"
+
+static const char *TAG = "APP_MAIN";
+
+#define WIFI_CONNECT_TIMEOUT_TICKS  pdMS_TO_TICKS(30000)
+
+static esp_err_t nvs_init(void)
+{
+    esp_err_t err = nvs_flash_init();
+    if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
+        ESP_ERROR_CHECK(nvs_flash_erase());
+        err = nvs_flash_init();
+    }
+    return err;
+}
 
 void app_main(void)
 {
