@@ -1,2 +1,24 @@
-idf_component_register(SRCS "main.c"
-                    INCLUDE_DIRS ".")
+idf_component_register(
+    SRCS
+        "main.c"
+        "credentials.c"
+        "ble_prov.c"
+        "gatt_prov.c"
+        "wifi_sta.c"
+        "gateway_id.c"
+        "provision_client.c"
+        "nrf24_receiver.c"
+        "stations_registry.c"
+        "list_update_client.c"
+        "sntp_sync.c"
+        "measurement_client.c"
+    INCLUDE_DIRS
+        "Inc"
+    REQUIRES
+        nvs_flash
+        esp_wifi
+        esp_event
+        esp_netif
+        esp_http_client
+        bt
+)
